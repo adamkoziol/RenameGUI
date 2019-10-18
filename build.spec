@@ -3,10 +3,14 @@
 import gooey
 gooey_root = os.path.dirname(gooey.__file__)
 
+image_overrides = Tree('images', prefix='images')
+
+script_path = os.path.abspath(os.curdir)
+
 block_cipher = None
 
-a = Analysis(['rename.py'],  # replace me with your path
-             pathex=['/home/adamkoziol/PycharmProjects/RenameGUI/rename.py'],
+a = Analysis([os.path.join(script_path, 'rename.py')],
+             pathex=[os.path.join(script_path, 'rename.py')],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -25,7 +29,8 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='rename.exe',
+          image_overrides,
+          name='Rename-O-Tron',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -33,4 +38,4 @@ exe = EXE(pyz,
           upx_exclude=[],
           runtime_tmpdir=None,
           console=False,
-          icon=os.path.join(gooey_root, 'images', 'program_icon.ico'))
+          icon=os.path.join(script_path, 'images', 'program_icon.ico'))

@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-from gooey import Gooey, GooeyParser
+from gooey import local_resource_path, Gooey, GooeyParser
 from glob import glob
 import shutil
 import os
 
-image_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'images')
 __author__ = 'adamkoziol'
 
 
@@ -121,7 +120,7 @@ class Renamer(object):
 
 
 @Gooey(program_name='Rename-O-matic (Rename-O-tron-3000)',
-       image_dir=image_path,
+       image_dir=local_resource_path('images'),
        show_restart_button=False,
        show_success_modal=False,
        show_failure_modal=False,
