@@ -35,7 +35,7 @@ class Renamer(object):
                 except ValueError:
                     print('Incorrect format detected. The .tsv file must only be two columns: original name and new '
                           'name')
-                    quit()
+                    raise SystemExit
         if duplicate_old:
             if len(duplicate_old) == 1:
                 print('Duplicate entry found in the existing name column: {dup}'
@@ -52,7 +52,7 @@ class Renamer(object):
                       .format(dup=', '.join(sorted(list(duplicate_new)))), flush=True)
         if duplicate_old or duplicate_new:
             print('Please fix your input sheet')
-            quit()
+            raise SystemExit
 
     def find_files(self):
         """
